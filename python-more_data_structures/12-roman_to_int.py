@@ -7,10 +7,10 @@ def roman_to_int(roman_string):
     for index, chr in enumerate(roman_string):
         if chr == "I" and index < len(roman_string)-1:
             if roman_string[index+1] == 'V':
-                number += 4
+                number += 4 * roman_string.count("IV")
                 roman_string = roman_string.replace("IV", "--")
             if roman_string[index+1] == 'X':
-                number += 9
+                number += 9 * roman_string.count("IX")
                 roman_string = roman_string.replace("IX", "--")
         if chr in roman:
             number += (roman[chr] * roman_string.count(chr))
