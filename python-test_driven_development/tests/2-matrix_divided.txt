@@ -166,3 +166,6 @@ Passing one argument to matrix_divided().
 	    ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
+Test one el:
+    >>> matrix_divided([[2]], 2)
+    [[1.0]]
