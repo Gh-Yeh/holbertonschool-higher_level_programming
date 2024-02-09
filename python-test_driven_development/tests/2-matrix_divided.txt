@@ -100,3 +100,26 @@ Test missing 1 arg:
     Traceback (most recent call last):
     ...
     TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+::
+
+    >>> matrix = "not a list"
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+::
+
+    >>> matrix = None
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Note that an empty list will raise the TypeError.
+
+::
+
+    >>> matrix = []
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
