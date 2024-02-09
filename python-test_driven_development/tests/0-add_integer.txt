@@ -1,0 +1,49 @@
+The ``0-add_integer`` module
+======================
+
+Using ``add``
+-------------------
+
+This is an add_integer text file in reStructuredText format. First import
+``add_integer`` from the ``0-add_integer`` module:
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+
+  Test two integer arguments:
+    >>> add_integer(1,2)
+    3
+
+  Test one negative float:
+    >>> add_integer(100,-2)
+    98
+
+  Test one integer argument:
+    >>> add_integer(2)
+    100
+
+  Test a non integer/float second argument:
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+  Test a non integer/float first argument:  
+    >>> add_integer(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+  
+  Test the function also works with floating-point values:
+    >>> add_integer(2.0, 3.0)
+    5
+  
+  Test two strings:
+    >>> add_integer("foo", "bar")
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+  Test two floats:
+    >>> add_integer(2.9, 2.9)
+    4
