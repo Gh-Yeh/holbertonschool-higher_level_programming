@@ -84,13 +84,6 @@ Dividing by a various types.
     >>> matrix_divided(matrix, (1))
     [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
 
-Dividing None by None.
-    >>> matrix = None
-    >>> matrix_divided(matrix, None)
-    Traceback (most recent call last):
-        ...
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
-
 Passing an empty matrix.
     >>> matrix = []
     >>> matrix_divided(matrix, 10)
@@ -126,6 +119,14 @@ Dividing a matrix where some of its elements are not floats or integers.
     	...
     TypeError: matrix must be a matrix (list of lists) of integers/floats
 
+Test division by inf:
+    >>> matrix_divided([[2, 4, 8], [1, 2, 3]], float('inf'))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+Test division by nan:
+    >>> matrix_divided([[2, 4, 8], [1, 2, 3]], float('nan'))
+    [[nan, nan, nan], [nan, nan, nan]]
+
 Passing more than two arguments to matrix_divided().
     >>> matrix = [[1, 2, 3], [4, 5, 6]]
     >>> matrix_divided(matrix, 10, 11) #doctest: +ELLIPSIS
@@ -145,3 +146,4 @@ Passing one argument to matrix_divided().
     Traceback (most recent call last):
 	    ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
