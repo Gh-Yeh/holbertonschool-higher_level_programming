@@ -1,7 +1,7 @@
 The ``0-add_integer`` module
 ======================
 
-Using ``add``
+Using ``add_integer``
 -------------------
 
 This is an add_integer text file in reStructuredText format. First import
@@ -17,6 +17,13 @@ This is an add_integer text file in reStructuredText format. First import
   Test one negative float:
     >>> add_integer(100,-2)
     98
+
+  Test with floating-point values:
+    >>> add_integer(2.0, 3.0)
+    5
+
+    >>> add_integer(2.9, 0.2)
+    2
 
   Test two negative numbers:
     >>> add_integer(-2.9, -0.2)
