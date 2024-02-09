@@ -98,6 +98,13 @@ Passing a string as a matrix.
     	...
     TypeError: matrix must be a matrix (list of lists) of integers/floats
 
+Test unmodified matrix:
+    >>> m = [[2, 4, 8], [1, 2, 3]]
+    >>> matrix_divided(m, 2)
+    [[1.0, 2.0, 4.0], [0.5, 1.0, 1.5]]
+    >>> m[1][1]
+    2
+
 Passing a tuple as a matrix.
     >>> matrix = ([1, 2, 3], [1, 2, 3])
     >>> matrix_divided(matrix, 10)
@@ -126,6 +133,18 @@ Test division by inf:
 Test division by nan:
     >>> matrix_divided([[2, 4, 8], [1, 2, 3]], float('nan'))
     [[nan, nan, nan], [nan, nan, nan]]
+
+Test empty matrix more:
+    >>> matrix_divided([[], [], []], 10)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test empty matrix:
+    >>> matrix_divided([[]], 10)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 Passing more than two arguments to matrix_divided().
     >>> matrix = [[1, 2, 3], [4, 5, 6]]
