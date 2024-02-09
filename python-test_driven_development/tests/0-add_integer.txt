@@ -18,6 +18,10 @@ This is an add_integer text file in reStructuredText format. First import
     >>> add_integer(100,-2)
     98
 
+  Test two negative numbers:
+    >>> add_integer(-2.9, -0.2)
+    -2
+  
   Test one integer argument:
     >>> add_integer(2)
     100
