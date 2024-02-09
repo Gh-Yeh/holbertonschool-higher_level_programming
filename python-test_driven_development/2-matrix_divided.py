@@ -15,7 +15,7 @@ def matrix_divided(matrix, div):
         TypeError: If div is not int or float or equal to zero.
         ZeroDivisionError: If div is zero.
     """
-    if not isinstance(matrix, list) or len(matrix) == 0:
+    if not isinstance(matrix, list) or len(matrix) == 0 or type(matrix[0]) in [int, float, str]:
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats")
     if type(div) not in [int, float]:
