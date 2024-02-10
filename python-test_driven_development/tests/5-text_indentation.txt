@@ -1,0 +1,132 @@
+The ``5-text_indentation`` module
+============================
+
+Using ``text_indentation``
+---------------------
+
+Import module:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Testing a normal case:
+    >>> text_indentation("testing phase")
+    testing phase
+
+Test string the whitespaces:
+    >>> text_indentation("phase          ")
+    phase
+
+
+    >>> text_indentation("        phase")
+    phase
+    
+
+    >>> text_indentation("        phase          ")
+    phase
+    
+Test string with empty string:
+    >>> text_indentation("")
+
+Test string with empty string 2:
+    >>> text_indentation("      ")
+
+Test with special characters:
+    >>> text_indentation("testing: phase")
+    testing:
+    <BLANKLINE>
+    phase
+
+
+    >>> text_indentation("      ?:  :  ")
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Testing newlines
+    >>> text_indentation("\n")
+    <BLANKLINE>
+
+    >>> text_indentation("\n\n")
+    <BLANKLINE>
+    <BLANKLINE>
+
+    >>> text_indentation("testing\n\n")
+    testing
+    <BLANKLINE>
+
+Test all special characters in one example:
+    >>> text_indentation("testing: phase? school. fooo")
+    testing:
+    <BLANKLINE>
+    phase?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+
+    >>> text_indentation("testing   :     phase    ?    school.    fooo")
+    testing:
+    <BLANKLINE>
+    phase?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+
+    >>> text_indentation("testing   :     phase    ?    school.    fooo     ")
+    testing:
+    <BLANKLINE>
+    phase?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+Test just delimeters:
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+
+    >>> text_indentation("     ?   ")
+    ?
+    <BLANKLINE>
+
+    >>> text_indentation("?testing.")
+    ?
+    <BLANKLINE>
+    testing.
+    <BLANKLINE>
+
+    >>> text_indentation("?\n\n.\n\n:")
+    ?
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Test none:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Test number:
+    >>> text_indentation(33)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+    
