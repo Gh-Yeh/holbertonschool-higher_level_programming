@@ -22,6 +22,6 @@ class Student:
         Args:
             attrs (list): (Optional) The attributes to represent.
         """
-        if (not isinstance(attrs, list)):
+        if (not isinstance(attrs, list) or all(type(ele) != str for ele in attrs)):
             return self.__dict__
         return {item: self.__dict__[item] for item in attrs if item in self.__dict__}
