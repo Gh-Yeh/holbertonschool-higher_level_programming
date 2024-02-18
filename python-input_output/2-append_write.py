@@ -1,15 +1,20 @@
 #!/usr/bin/python3
-"""Defines a file-appending function and returns the number of characters added."""
+"""It has a module tha append an other file
+    to a previously stated file.
+"""
 
 
 def append_write(filename="", text=""):
-    """Appends a string to the end of a file.
-
-    Args:
-        filename (str): The name of the file to append to.
-        text (str): The string to append to the file.
-    Returns:
-        The number of characters appended.
     """
-    with open(filename, "a", encoding="utf-8") as f:
-        return f.write(text)
+    Append a string at the end of a text file (UTF-8) and
+    return the number of characters added.
+
+    Parameters:
+    - filename (str): The name of the file.
+    - text (str): The text to append to the file.
+
+    Returns:
+    - int: Number of characters added.
+    """
+    with open(filename, 'a', encoding='utf-8') as file:
+        return file.write(text)
