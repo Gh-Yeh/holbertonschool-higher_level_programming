@@ -1,108 +1,88 @@
 #!/usr/bin/python3
-"""
-...
-"""
-
+"""Defines a rectangle class."""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """
-    ...
-    """
+    """Represent a rectangle."""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """
-        ...
+        """Initialize a new Rectangle.
+
+        Args:
+            width (int): The width of this Rectangle.
+            height (int): The height of this Rectangle.
+            x (int): The x coordinate of this Rectangle.
+            y (int): The y coordinate of this Rectangle.
+            id (int): The identity of this Rectangle.
+        Raises:
+            TypeError: If either of width or height is not an int.
+            ValueError: If either of width or height <= 0.
+            TypeError: If either of x or y is not an int.
+            ValueError: If either of x or y < 0.
         """
         super().__init__(id)
 
-        self.check_integer_parameter(width, 'width')
-        self.check_integer_parameter(height, 'height')
-        self.check_integer_parameter(x, 'x')
-        self.check_integer_parameter(y, 'y')
-
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.x = x
+        self.height = height
+        self.y = y
 
     @property
     def width(self):
-        """
-        ...
-        """
+        '''Width of this rectangle.'''
         return self.__width
-
-    @width.setter
-    def width(self, param):
-        """
-        ...
-        """
-        self.check_integer_parameter(param, 'width')
-
-        self.__width = param
 
     @property
     def height(self):
-        """
-        ...
-        """
+        '''Height of this rectangle.'''
         return self.__height
-
-    @height.setter
-    def height(self, param):
-        """
-        ...
-        """
-        self.check_integer_parameter(param, 'height')
-
-        self.__height = param
 
     @property
     def x(self):
-        """
-        ...
-        """
+        '''X of this rectangle.'''
         return self.__x
-
-    @x.setter
-    def x(self, param):
-        """
-        ...
-        """
-        self.check_integer_parameter(param, 'x')
-
-        self.__x = param
 
     @property
     def y(self):
-        """
-        ...
-        """
+        '''Y of this rectangle.'''
         return self.__y
 
+    @width.setter
+    def width(self, value):
+        '''setter method for the attribute width'''
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
+
+    @height.setter
+    def height(self, value):
+        '''setter method for the attribute height'''
+        if type(value) != int:
+            raise TypeError("height must be an integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = value
+
+    @x.setter
+    def x(self, value):
+        '''setter method for the attribute x'''
+        if type(value) != int:
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
+
     @y.setter
-    def y(self, param):
-        """
-        ...
-        """
-        self.check_integer_parameter(param, 'y')
-
-        self.__y = param
-
-    def check_integer_parameter(self, value, param):
-        """
-        ...
-        """
-        if type(value) is not int:
-            raise TypeError(param + ' must be an integer')
-
-        if value <= 0 and param in ('width', 'height'):
-            raise ValueError(param + ' must be > 0')
-
-        if value < 0 and param in ('x', 'y'):
-            raise ValueError(param + ' must be >= 0')
+    def y(self, value):
+        '''setter method for the attribute y'''
+        if type(value) != int:
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value
 
     def area(self):
         """Return the area of the Rectangle."""
@@ -149,15 +129,3 @@ class Rectangle(Base):
             'x': self.__x,
             'y': self.__y
         }
-
-
-if __name__ == "__main__":
-
-    r1 = Rectangle(10, 2)
-    print(r1.id)
-
-    r2 = Rectangle(2, 10)
-    print(r2.id)
-
-    r3 = Rectangle(10, 2, 0, 0, 12)
-    print(r3.id)
