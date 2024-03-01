@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+
 """
 ...
 """
@@ -105,59 +105,59 @@ class Rectangle(Base):
             raise ValueError(param + ' must be >= 0')
 
     def area(self):
-        """
-        ...
-        """
-        return self.__width * self.__height
+        """Return the area of the Rectangle."""
+        return self.width * self.height
 
     def display(self):
-        """
-        ...
-        """
-        if self.__y > 0:
-            print('\n' * self.__y, end='')
-
-        for i in range(self.height):
-            if self.__x > 0:
-                print(' ' * self.__x, end='')
-
-            print('#' * self.__width)
+        '''Prints the rectangle in #'''
+        rect = '\n' * self.y + \
+            (' ' * self.x + '#' * self.width + '\n') * self.height
+        print(rect, end='')
 
     def __str__(self):
-        """
-        ...
-        """
-        return '[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}'.format(
-            self.id, self.x, self.y, self.width, self.height
-        )
+        '''Returns string info about this rectangle.'''
+        return '[{}] ({}) {}/{} - {}/{}'.\
+            format(type(self).__name__, self.id, self.x, self.y, self.width,
+                   self.height)
+
+    def __func_update(self, id=None, width=None, height=None, x=None, y=None):
+        '''Internal method that set instance attributes.'''
+        if id is not None:
+            self.id = id
+        if width is not None:
+            self.width = width
+        if height is not None:
+            self.height = height
+        if x is not None:
+            self.x = x
+        if y is not None:
+            self.y = y
 
     def update(self, *args, **kwargs):
-        """
-        ...
-        """
-        argc = len(args)
-        kwargc = len(kwargs)
-        modif_attrs = ['id', 'width', 'height', 'x', 'y']
-
-        if argc > 5:
-            argc = 5
-
-        if argc > 0:
-            for i in range(argc):
-                setattr(self, modif_attrs[i], args[i])
-        elif kwargc > 0:
-            for k, v in kwargs.items():
-                if k in modif_attrs:
-                    setattr(self, k, v)
+        '''Updates instance attributes via no-keyword & keyword args.'''
+        if args:
+            self.__func_update(*args)
+        elif kwargs:
+            self.__func_update(**kwargs)
 
     def to_dictionary(self):
-        """
-        ...
-        """
+        '''Returns dictionary representation of this class.'''
         return {
             'id': self.id,
-            'width': self.width,
-            'height': self.height,
-            'x': self.x,
-            'y': self.y
+            'width': self.__width,
+            'height': self.__height,
+            'x': self.__x,
+            'y': self.__y
         }
+
+
+if __name__ == "__main__":
+
+    r1 = Rectangle(10, 2)
+    print(r1.id)
+
+    r2 = Rectangle(2, 10)
+    print(r2.id)
+
+    r3 = Rectangle(10, 2, 0, 0, 12)
+    print(r3.id)
